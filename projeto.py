@@ -85,10 +85,15 @@ def historico():
 
 
 @app.route('/initdb')
-def initdb():
-    db.create_all()
-    return 'Banco de dados inicializado com sucesso!'
 
+def initdb():
+    try:
+        db.create_all()
+        return 'Banco de dados criado com sucesso!'
+    except Exception as e:
+        return f'Erro ao criar banco: {str(e)}'
+    
+    
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
