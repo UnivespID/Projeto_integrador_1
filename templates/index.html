@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Estoque</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h2>Gestão de Estoque</h2>
+
+    <input type="text" placeholder="Buscar item..." oninput="window.location.href='/?filtro=' + this.value">
+
+    <h3>Adicionar Item</h3>
+    <form action="/adicionar" method="post">
+        <input type="text" name="nome" placeholder="Nome do Item" required>
+        <input type="number" name="quantidade" placeholder="Quantidade" required>
+        <input type="text" name="lote" placeholder="Lote" required>
+        <input type="date" name="data_entrada" required>
+        <input type="date" name="data_validade" required>
+        <button type="submit" class="btn btn-add">Adicionar</button>
+    </form>
+
+    <h3>Remover Item</h3>
+    <form action="/remover" method="post">
+        <input type="number" name="id" placeholder="ID do Item" required>
+        <input type="number" name="quantidade" placeholder="Quantidade" required>
+        <input type="text" name="usuario" placeholder="Nome do Usuário" required>
+        <button type="submit" class="btn btn-remove">Remover</button>
+    </form>
+
+    <h3>Itens em Estoque</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Lote</th>
+                <th>Data de Entrada</th>
+                <th>Data de Validade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.quantidade }}</td>
+                <td>{{ item.lote }}</td>
+                <td>{{ item.data_entrada.strftime('%d/%m/%Y') }}</td>
+                <td>{{ item.data_validade.strftime('%d/%m/%Y') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/historico" class="btn btn-historico">Ver Histórico de Movimentações</a>
+</body>
+
+</html>

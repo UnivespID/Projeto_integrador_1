@@ -1,0 +1,150 @@
+/* Estilo Geral */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f7;
+    color: #2c3e50;
+    padding: 20px;
+    margin: 0;
+}
+
+h2, h3 {
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* Tabela de Estoque e Histórico */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+table th, table td {
+    border: 1px solid #dfe6e9;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table tr:hover {
+    background-color: #dfe6e9;
+}
+
+.entrada {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.saida {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Formulários e Inputs */
+form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #dfe6e9;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: calc(25% - 12px);
+    margin-right: 10px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-add {
+    background-color: #27ae60;
+}
+
+.btn-remove {
+    background-color: #c0392b;
+}
+
+.btn-historico {
+    background-color: #3498db;
+}
+
+.btn-voltar {
+    background-color: #7f8c8d;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Busca e Links */
+input[type="text"]::placeholder {
+    color: #95a5a6;
+}
+
+input[type="text"] {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.btn-historico, .btn-voltar {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Layout Responsivo */
+@media (max-width: 768px) {
+    input[type="text"], input[type="number"], input[type="date"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
