@@ -83,6 +83,12 @@ def historico():
     movimentacoes = Movimentacao.query.order_by(Movimentacao.data.desc()).all()
     return render_template('historico.html', movimentacoes=movimentacoes)
 
+
+@app.route('/initdb')
+def initdb():
+    db.create_all()
+    return 'Banco de dados inicializado com sucesso!'
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
