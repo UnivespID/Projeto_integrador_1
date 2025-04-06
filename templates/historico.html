@@ -11,6 +11,12 @@
 <body>
     <h2>Histórico de Movimentações</h2>
 
+    <!-- Toggle Switch -->
+    <label class="switch">
+        <input type="checkbox" id="themeToggle" onchange="toggleDarkMode()">
+        <span class="slider"></span>
+    </label>
+
     <table>
         <thead>
             <tr>
@@ -37,6 +43,24 @@
     </table>
 
     <a href="/" class="btn btn-voltar">Voltar ao Estoque</a>
+
+    <!-- Script do Dark Mode -->
+    <script>
+        function toggleDarkMode() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeToggle').checked = isDark;
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const isDark = savedTheme === 'dark';
+            if (isDark) {
+                document.body.classList.add('dark-theme');
+            }
+            document.getElementById('themeToggle').checked = isDark;
+        };
+    </script>
 </body>
 
 </html>

@@ -1,10 +1,14 @@
-/* Estilo Geral */
-body {
+/* Estilo base e limpeza */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f4f7;
     color: #2c3e50;
     padding: 20px;
-    margin: 0;
+    box-sizing: border-box;
 }
 
 h2, h3 {
@@ -22,19 +26,27 @@ a:hover {
     opacity: 0.8;
 }
 
-/* Tabela de Estoque e Histórico */
+/* Tabela responsiva */
+.tabela-responsiva {
+    width: 100%;
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    table-layout: fixed; /* Força as colunas a se ajustarem */
 }
 
 table th, table td {
     border: 1px solid #dfe6e9;
     padding: 10px;
     text-align: left;
+    word-wrap: break-word;
 }
 
 table th {
@@ -50,17 +62,7 @@ table tr:hover {
     background-color: #dfe6e9;
 }
 
-.entrada {
-    color: #27ae60;
-    font-weight: bold;
-}
-
-.saida {
-    color: #c0392b;
-    font-weight: bold;
-}
-
-/* Formulários e Inputs */
+/* Formulários */
 form {
     margin-bottom: 20px;
     padding: 15px;
@@ -76,6 +78,7 @@ input, button {
     border: 1px solid #bdc3c7;
     border-radius: 5px;
     box-sizing: border-box;
+    max-width: 100%;
 }
 
 input[type="text"], input[type="number"], input[type="date"] {
@@ -88,6 +91,7 @@ input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
     outline: none;
 }
 
+/* Botões */
 button {
     cursor: pointer;
     border: none;
@@ -121,30 +125,142 @@ button {
     opacity: 0.9;
 }
 
-/* Busca e Links */
-input[type="text"]::placeholder {
-    color: #95a5a6;
-}
-
-input[type="text"] {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.btn-historico, .btn-voltar {
-    margin-top: 10px;
-    text-align: center;
-}
-
-/* Layout Responsivo */
+/* Responsividade para telas pequenas */
 @media (max-width: 768px) {
     input[type="text"], input[type="number"], input[type="date"] {
         width: 100%;
         margin-bottom: 10px;
     }
-    
+
     .btn {
         width: 100%;
         margin-bottom: 10px;
     }
+}
+
+@media (max-width: 450px) {
+    table {
+        font-size: 12px;
+    }
+
+    table th, table td {
+        padding: 6px 4px;
+    }
+
+    table th:nth-child(1),
+    table td:nth-child(1) {
+        width: 40px;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) {
+        width: 100px;
+    }
+
+    table th:nth-child(3),
+    table td:nth-child(3),
+    table th:nth-child(4),
+    table td:nth-child(4),
+    table th:nth-child(5),
+    table td:nth-child(5),
+    table th:nth-child(6),
+    table td:nth-child(6) {
+        width: 80px;
+    }
+}
+    /* Modo Escuro */
+/* Modo Escuro */
+.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-theme h2, .dark-theme h3 {
+    color: #f1f1f1;
+    border-bottom-color: #555;
+}
+
+.dark-theme table {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-theme table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme table tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+.dark-theme table tr:hover {
+    background-color: #3a3a3a;
+}
+
+.dark-theme form {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+.dark-theme input, 
+.dark-theme button {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+.dark-theme input:focus {
+    border-color: #888;
+}
+
+.btn-dark-toggle {
+    background-color: #555;
+    margin-bottom: 20px;
+}
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    margin-bottom: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
 }

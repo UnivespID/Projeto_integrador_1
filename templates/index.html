@@ -10,6 +10,10 @@
 
 <body>
     <h2>Gestão de Estoque</h2>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle" onchange="toggleDarkMode()">
+        <span class="slider"></span>
+    </label>
 
     <input type="text" placeholder="Buscar item..." oninput="window.location.href='/?filtro=' + this.value">
 
@@ -32,6 +36,7 @@
     </form>
 
     <h3>Itens em Estoque</h3>
+    <div class="tabela-responsiva">
     <table>
         <thead>
             <tr>
@@ -56,8 +61,32 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 
     <a href="/historico" class="btn btn-historico">Ver Histórico de Movimentações</a>
+    <script>
+        // Função para alternar o tema
+        function toggleDarkMode() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+            // Atualiza o toggle visualmente
+            document.getElementById('themeToggle').checked = isDark;
+        }
+    
+        // Verifica o tema salvo ao carregar a página
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const isDark = savedTheme === 'dark';
+    
+            if (isDark) {
+                document.body.classList.add('dark-theme');
+            }
+    
+            // Atualiza o estado do toggle (checkbox)
+            document.getElementById('themeToggle').checked = isDark;
+        }
+    </script>
 </body>
 
 </html>
